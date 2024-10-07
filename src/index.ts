@@ -242,7 +242,7 @@ class QuickChart {
       throw new Error('You must call setConfig before getUrl');
     }
 
-    const resp = await postJson(`${this.getBaseUrl()}/chart`, this.getPostData());
+    const resp = await postJson(`${this.baseUrl}/chart?key=${this.apiKey}`, this.getPostData());
     if (!resp.ok) {
       const quickchartError = resp.headers.get('x-quickchart-error');
       const details = quickchartError ? `\n${quickchartError}` : '';
